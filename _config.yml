@@ -30,10 +30,15 @@ description: A globally-distributed, resource-constrained database.
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 collections:
   documentation:
     output: true
+
+sass:
+  quiet_deps: true
+  silence_deprecations: [import]
 
 # Exclude from processing.
 # The following items will not be processed, by default.
