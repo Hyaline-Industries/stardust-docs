@@ -1,0 +1,38 @@
+---
+layout: base
+---
+
+<div class="home">
+  {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+
+  {% if site.paginate %}
+    {% assign posts = paginator.posts %}
+  {% else %}
+    {% assign posts = site.posts %}
+  {% endif %}
+
+  {% assign cols = site.documentation %}
+
+  <section class="pages">
+    <ul class="post-list">
+      {%- for page in cols -%}
+      <li>
+        <h3>
+          <a class="post-link" href="{{ page.url | relative_url }}">
+            {{ page.title | escape }}
+          </a>
+        </h3>
+        {%- if site.minima.show_excerpts -%}
+          {{ page.excerpt }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+
+  </section>
+</div>
