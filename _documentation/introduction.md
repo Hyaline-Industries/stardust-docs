@@ -3,17 +3,20 @@ layout: page
 ---
 
 # What is Stardust?
+---
 
 # Abstract
 Stardust is a globally distributed database which is _resource-constrained_. Specifically, Stardust is built such that the resource consumption of any datacenter within its system can be optimized to remain within a bounded resource constraint (as best as it is able, at least).
 
-# The Problem
+## The Problem
+---
 Distributed databases use a lot of resources:
-    * It requires lots of servers to handle storage and workloads
-    * It requires lots of active intervention and care to keep resource utilization optimal
-        * Constantly tuning stuff
-    * It requires tons of _electricity_
-        * And that electrical demand is highly inconsistent as well, rising and falling with demand. Makes it very hard to get favorable power rates, and could cause datacenters to be forced into non-firm power contracts in the future.
+
+* It requires lots of servers to handle storage and workloads
+* It requires lots of active intervention and care to keep resource utilization optimal
+    * Constantly tuning stuff
+* It requires tons of _electricity_
+    * And that electrical demand is highly inconsistent as well, rising and falling with demand. Makes it very hard to get favorable power rates, and could cause datacenters to be forced into non-firm power contracts in the future.
 
 A lot of this resource consumption, especially in a multi-datacenter database system, are partly or wholly wasted.
 
@@ -34,13 +37,16 @@ And fundamentally, the underlying software that you're trying to run just was ne
 
 Stardust aims to resolve this problem
 
-# The goal
+## The Goal
+---
+
 Stardust has three main goals:
+
 * Geographically distributed. You can run the same Stardust instance across multiple datacenters that are geographically dispersed.
 * Transactionally correct. You can rely on its transaction system to perform correctly
 * Resource-managed. The system will dynamically adjust itself in order to stay within externally set resource constraints.
 
-## Example situation
+### Example situation
 ( This isn't necessarily a highly _feasible_ example, but it's a good illustration of the goal).
 
 Suppose that you want to run a globally distributed database _purely on solar power_. In order to do this, you either need to
@@ -77,7 +83,8 @@ Of course, Stardust is still a database, so it still has to provide certain base
 * Multi-datacenter reliability ( other features aside, if you're going to move workloads between datacenters, then you need to be able to operate across multiple datacenters)
 * Effective query planning and execution
 
-## A note about performance
+# A note about performance
+---
 It is commonly held that performance is tightly coupled to available resources in a distributed system. Or rather, that it is impossible to have both "scalability" _and_ resource constraints. As you increase the overall workload necessary, you will eventually hit resource limits which force you to either increase resources or limit scalability.
 
 This is probably true. There are definitely tricks that Stardust will need to engage with in order to reduce this. Things like really efficient code, good query optimization, etc., but fundamentally you cannot sustain infinitely large workloads with finite resources. Stardust does, at the end of the day, favor staying within resource bounds _over_ performance. It probably makes the entire project a bit of an academic exercise, but that's what we're doing.
